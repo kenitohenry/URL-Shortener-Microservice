@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<style>
+    body    { padding-top:50px; }
+  h1 {text-align:center;}
+  ul{
+      list-style-type:none;
+      margin:none;
+      width:100%;
+      
+  }
+  li{
+      display:flex;
+      margin:none;
+      justify-content:space-between;
+  }
+  li p{
+      flex-basis:0;
+  }
+  .table-head{
+      display:flex;
+      justify-content:space-between;
+  }
+</style>
+</head>
+<body class="container">
+
+<header>
+   <h1>
+     Url Shortener 👌
+  </h1>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <form method="post" action="/api/shorturl/new">
+          <label for"url">URl:<input type="text" name="url" id="url"  placeholder="http(s)://xample.something" required></label>
+          <label for"name">Your Name:<input type="text" name="name" id="name" placeholder="Bruce Victor"></label>
+          <input type="submit" value="Shorten Url">
+      </form>
+    </div>
+</main>
+<div><div class="table-head"><h3>Original Url</h3><h3>Shorten By </h3><h3>Short Url</h3></div>
+    <ul>
+        <% for(let prop in data) { %>
+            <li><p><%= data[prop].url %> </p> <p><%= data[prop].name %></p> <p><a href=<%- "/api/shorturl/"+data[prop].shortUrl %> > <%= data[prop].shortUrl %> </a></p> </li>
+            <% } %>
+    </ul>
+</div>
+
+
+</body>
+</html>
